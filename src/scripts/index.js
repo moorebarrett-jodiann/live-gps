@@ -23,6 +23,7 @@ function selectAll(selector, parent = document) {
 /**-----------------------------------DATA------------------------------------ */
 
 const overlay = select('.overlay');
+const fly = select('#fly');
 
 // Map interface handlers
 const scrollZoom = 'scrollZoom';
@@ -50,6 +51,15 @@ function getLocation(position) {
     });
     
     overlay.style.display = 'none';
+    fly.style.display = 'block';
+
+    onEvent('click', fly, function(){
+        // Fly to a random location
+        map.flyTo({
+            center: [longitude, latitude],
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+    });
 
     //disable scrollZoom handlers
     map[scrollZoom].disable();
