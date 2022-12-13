@@ -23,7 +23,6 @@ function selectAll(selector, parent = document) {
 /**-----------------------------------DATA------------------------------------ */
 
 const overlay = select('.overlay');
-const fly = select('#fly');
 const loader = select('.overlay .loader');
 
 // Map interface handlers
@@ -42,12 +41,12 @@ const map = new mapboxgl.Map({
     pitch: 40
 });
 
-// map.dragPan.disable();
-// map.keyboard.disable();
-// map.scrollZoom.disable();
-// map.doubleClickZoom.disable();
-// map.touchZoomRotate.disable();
-// map.dragRotate.disable();
+map.dragPan.disable();
+map.keyboard.disable();
+map.scrollZoom.disable();
+map.doubleClickZoom.disable();
+map.touchZoomRotate.disable();
+map.dragRotate.disable();
 
 const marker = new mapboxgl.Marker({ 
     color: '#2B4162' 
@@ -66,7 +65,6 @@ function getLocation(position) {
         marker.setLngLat([longitude, latitude]).addTo(map);
         setTimeout(() => {
             overlay.style.display = 'none';
-            fly.style.display = 'block';
         }, 1_000);
     }    
 }
