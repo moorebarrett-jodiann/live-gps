@@ -1,0 +1,76 @@
+@import "./reset.css";
+
+:root {
+    --app-dark-grey-bg:#2c2d33;
+    --app-dark-bg:#131313;
+    --app-light-bg:#f1f2f3;
+    --app-light-text-color:rgb(244, 246, 248);
+    --app-red:#ff3c57;
+    --app-green:#46737C;
+    --app-purple:#6564DB;
+    --app-orange:#ff833c;
+    --app-light-blue:#89D2DC;
+    --app-blue:#232ED1;
+    --app-dark-blue: #2B4162;
+    --app-light-text-color: #f4f6f8;
+    --app-dark-text-color: #1c1c1c;
+
+    --app-letter-spacing: 0.2px;
+    --app-header-line-height: 56px;
+    --app-footer-line-height: 40px;
+    --app-text-line-height: 50px;
+    --app-h2-font-size: 17px;
+    --app-p-font-size: 14px;
+}
+    
+body {
+    background: var(--app-light-bg);
+}
+
+.container {
+    width: min(100% - 30px, 1080px);
+    margin-inline: auto;
+}
+
+/**************************************************/
+/*****       Main                            ******/
+/**************************************************/
+
+section {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    position: relative;
+}
+
+section .overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.03);
+    display: grid;
+    place-items: center;
+}
+
+section .overlay .loader {
+    border: 5px solid var(--app-dark-blue);
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+} 
+
+section #map { 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/**************************************************/
+/*****       Animations                      ******/
+/**************************************************/
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
