@@ -42,12 +42,12 @@ const map = new mapboxgl.Map({
     pitch: 40
 });
 
-map.dragPan.disable();
-map.keyboard.disable();
-map.scrollZoom.disable();
-map.doubleClickZoom.disable();
-map.touchZoomRotate.disable();
-map.dragRotate.disable();
+// map.dragPan.disable();
+// map.keyboard.disable();
+// map.scrollZoom.disable();
+// map.doubleClickZoom.disable();
+// map.touchZoomRotate.disable();
+// map.dragRotate.disable();
 
 const marker = new mapboxgl.Marker({ 
     color: '#2B4162' 
@@ -72,7 +72,6 @@ function getLocation(position) {
 }
 
 function errorHandler(error) {
-    console.log('here');
     loader.style.animationPlayState = 'paused';
     console.log(error.message);
 }
