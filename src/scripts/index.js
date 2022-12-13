@@ -58,10 +58,6 @@ function getLocation(position) {
     });
     
     overlay.style.display = 'none';
-    const watermark1 = select('.mapboxgl-ctrl-bottom-left');
-    const watermark2 = select('.mapboxgl-ctrl-bottom-right');
-    watermark1.style.display = 'none';
-    watermark2.style.display = 'none';
 
     //disable scrollZoom handlers
     map[scrollZoom].disable();
