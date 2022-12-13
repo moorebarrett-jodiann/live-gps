@@ -1,7 +1,7 @@
 'use strict';
 
 /*--------------------------------------------------------------------------- *
- * Find Me Geolocation Website
+ * Live Geolocation
  * Jodi-Ann Barrett
  * 
  * */
@@ -22,12 +22,6 @@ function selectAll(selector, parent = document) {
 
 /**-----------------------------------DATA------------------------------------ */
 
-// const longitudeCoords = select('.longitude');
-// const latitudeCoords = select('.latitude');
-
-// const dialog = select('dialog');
-// const aboutUs = select('.about');
-
 const overlay = select('.overlay');
 
 // Map interface handlers
@@ -46,8 +40,6 @@ const options = {
 
 function getLocation(position) {
     const {longitude, latitude} = position.coords; 
-    // longitudeCoords.innerText = longitude;
-    // latitudeCoords.innerText = latitude;    
     
     const map = new mapboxgl.Map({
         container: 'map', // container ID
