@@ -24,6 +24,7 @@ function selectAll(selector, parent = document) {
 
 const overlay = select('.overlay');
 const fly = select('#fly');
+const loader = select('.overlay .loader');
 
 // Map interface handlers
 const scrollZoom = 'scrollZoom';
@@ -32,58 +33,56 @@ const doubleClickZoom = 'doubleClickZoom';
 const dragRotate = 'dragRotate';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWFubmJhcnJldHQiLCJhIjoiY2xiZ3JxMzJmMGFjcDN2bW1ydjlpc2NjYyJ9.pgkAM_oUNu6TpYp8ScH9Ow';
-const options = {
-    enableHighAccuracy: true
-}
-/**--------------------------------------------------------------------------- */
 
-/**-----------------------------RENDER MAP------------------------------------ */
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [0, 0],
+    zoom: 16,
+    pitch: 40
+});
+
+map.dragPan.disable();
+map.keyboard.disable();
+map.scrollZoom.disable();
+map.doubleClickZoom.disable();
+map.touchZoomRotate.disable();
+map.dragRotate.disable();
+
+const marker = new mapboxgl.Marker({ 
+    color: '#2B4162' 
+});
+
+const options = {
+    enableHighAccuracy: true,
+    maximumAge: 0
+}
 
 function getLocation(position) {
-    const {longitude, latitude} = position.coords; 
+    const {longitude, latitude} = position.coords;
     
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [longitude, latitude], // starting position [lng, lat]
-        zoom: 15, // starting zoom,
-        pitch: 60 // pitch in degrees
-    });
-    
-    overlay.style.display = 'none';
-    fly.style.display = 'block';
-
-    onEvent('click', fly, function(){
-        // Fly to center location
-        map.flyTo({
-            center: [longitude, latitude],
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
-    });
-
-    //disable scrollZoom handlers
-    map[scrollZoom].disable();
-    map[boxZoom].disable();
-    map[doubleClickZoom].disable();
-    map[dragRotate].enable();
-
-    // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.NavigationControl());
-    
-    // Default Marker and add it to the map.
-    const marker = new mapboxgl.Marker({ color: '#232ED1' })
-    .setLngLat([longitude, latitude])
-    .addTo(map);
+    if(longitude && latitude) {
+        map.setCenter([longitude, latitude]);
+        marker.setLngLat([longitude, latitude]).addTo(map);
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            fly.style.display = 'block';
+        }, 1_000);
+    }    
 }
 
 function errorHandler(error) {
+    console.log('here');
+    loader.style.animationPlayState = 'paused';
     console.log(error.message);
 }
 
+/**
+ * The watchPosition() method is used to register a handler function that will be called automatically, 
+ * each time the position of the device changes
+ */
 if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getLocation, errorHandler, options);
+    navigator.geolocation.watchPosition(getLocation, errorHandler, options);
 } else {
     console.log('Geolocation is not supported by your browser');
 }
-
-/**--------------------------------------------------------------------------- */
