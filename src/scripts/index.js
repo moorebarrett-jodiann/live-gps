@@ -54,7 +54,7 @@ function getLocation(position) {
     fly.style.display = 'block';
 
     onEvent('click', fly, function(){
-        // Fly to a random location
+        // Fly to center location
         map.flyTo({
             center: [longitude, latitude],
             essential: true // this animation is considered essential with respect to prefers-reduced-motion
