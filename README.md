@@ -1,4 +1,4 @@
-<h1 align="center">📍🚗Live GPS🚗📍</h1>
+<h1 align="center">📍🚗🚶Live GPS🚶🚗📍</h1>
 
 ### Table of contents
 - :computer: :point_right: [Demo](https://moorebarrett-jodiann.github.io/live-gps/) :point_left:
