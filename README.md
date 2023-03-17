@@ -29,7 +29,7 @@ You will learn:
 - How to show markers in your map
 - How to update location as you move
 
-##### Introduction
+#### Introduction
 
 ![Map](./src/images/map.png?raw=true "Map")
 
@@ -39,7 +39,7 @@ Mapbox API is compatible with different platforms such as iOS, Android and Web S
 
 Mapbox is free to use based on the number of requests your app receives (i.e. number of user visits your app gets over an average period of time), and if you are looking to integrate with a large system, [different pricing tiers](https://www.mapbox.com/pricing/) are available.
 
-##### Get a Mapbox API key
+#### Get a Mapbox API key
 
 The steps below might vary as the product gets updated, however, these steps at minimum will get you setup for your first-time use of MapBox API.
 
@@ -53,7 +53,7 @@ The steps below might vary as the product gets updated, however, these steps at 
 
 5. Great! You are all set and you should now have access to your API key.
 
-##### Get the script tags of the Mapbox CDN
+#### Get the script tags of the Mapbox CDN
 
 To import the Mapbox's official library the fastest way possible, you need to use the CDN inside the `<head>` tag of your index.html page.
 
@@ -61,7 +61,7 @@ To import the Mapbox's official library the fastest way possible, you need to us
 <script src="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css" rel="stylesheet"/>
 ```
-##### Create a map
+#### Create a map
 
 To create our first map we need two files: the `HTML` and the `JavaScript`.
 
@@ -104,7 +104,7 @@ Note that you need to replace `<YOUR-API-KEY>` from `mapboxgl.accessToken` with 
 
 Awesome! 😄 You have a basic map setup. But can you see where you are? No? Okay let's fix that.
 
-##### Adding Markers
+#### Adding Markers
 
 Mapbox API has a built-in functionality to add markers in your map so you can see where you are.
 
@@ -140,7 +140,7 @@ function errorHandler(error) {
 ```
 Good Work! 👍👍 Now you have a map with a marker showing your current location. But wait 😲😲😲, there's more!
 
-##### Make Your Marker Move
+#### Make Your Marker Move
 
 Recall that this project will allow a user to see their live  location as they are moving. MapBox allows this through a `watchposition()` method that updates the coordinates of the device as it's position changes.
 
