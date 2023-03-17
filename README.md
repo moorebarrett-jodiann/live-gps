@@ -10,7 +10,6 @@
 ### Description
 
 HTML webpage that combines two APIs (HTML Geolocation and MapBox) that shows the live location of a device.
-- HTML 
 - HTML Geolocation
 - EcmaScript (ES)
 - [MapBox API](https://www.mapbox.com/)
