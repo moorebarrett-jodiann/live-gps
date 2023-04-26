@@ -74,9 +74,9 @@ In the `HTML` file we will contain our map in a `div`.
 <html>
   <head>
     <title>My Map</title>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css" rel="stylesheet"/>
-    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>        
+    <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body>
     <h3>My Map</h3>
@@ -155,6 +155,28 @@ if(navigator.geolocation) {
 }
 
 ```
+
+#### Add navigation between routes
+
+Use the [mapbox-gl-directions](https://github.com/mapbox/mapbox-gl-directions) plugin to show results from the Mapbox Directions API. Click the map to add an origin and destination, and use the toggle to switch among the available [routing profiles](https://docs.mapbox.com/api/navigation/directions/).
+
+Let's begin by adding the following scripts to our ```index.html``` page to style and add functionality to our directions toolbox:
+
+```html
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" type="text/css">
+
+```
+
+To show the directions toolbox on our map in the top-left position, we will add the code below to ```main.js```:
+
+```javascript
+map.addControl(new MapboxDirections({
+  accessToken: mapboxgl.accessToken
+}), 'top-left');
+```
+
 `CONGRATULATIONS!!` 🏆🏆🏆 You now have a basic functional device-tracking map. 
 
 ### Summary

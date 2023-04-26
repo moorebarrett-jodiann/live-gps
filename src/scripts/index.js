@@ -34,11 +34,6 @@ const dragRotate = 'dragRotate';
 // getting directions
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWFubmJhcnJldHQiLCJhIjoiY2xiZ3JxMzJmMGFjcDN2bW1ydjlpc2NjYyJ9.pgkAM_oUNu6TpYp8ScH9Ow';
 
-const directions = new MapboxDirections({
-    unit: 'metric',
-    profile: 'mapbox/cycling'
-});
-
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v12',
@@ -93,9 +88,6 @@ if(navigator.geolocation) {
 /***
  * Feature to control routes between two sites
  */
-map.addControl(
-    new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-    }),
-    'top-left'
-);
+map.addControl(new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+}), 'top-left');
