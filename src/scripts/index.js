@@ -31,7 +31,13 @@ const boxZoom = 'boxZoom';
 const doubleClickZoom = 'doubleClickZoom';
 const dragRotate = 'dragRotate';
 
+// getting directions
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWFubmJhcnJldHQiLCJhIjoiY2xiZ3JxMzJmMGFjcDN2bW1ydjlpc2NjYyJ9.pgkAM_oUNu6TpYp8ScH9Ow';
+
+const directions = new MapboxDirections({
+    unit: 'metric',
+    profile: 'mapbox/cycling'
+});
 
 const map = new mapboxgl.Map({
     container: 'map',
@@ -83,3 +89,13 @@ if(navigator.geolocation) {
 } else {
     console.log('Geolocation is not supported by your browser');
 }
+
+/***
+ * Feature to control routes between two sites
+ */
+map.addControl(
+    new MapboxDirections({
+        accessToken: mapboxgl.accessToken
+    }),
+    'top-left'
+);
